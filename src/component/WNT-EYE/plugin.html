@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+    <script src="http://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="./L.KML.js"></script>
+    <script src="http://10.3.3.129:3000/countries1.js"></script>
+</head>
+<body>
+<div style="width: 100vw; height: 100vh" id="map"></div>
+<script type="text/javascript">
+    // Make basemap
+    const map = new L.Map('map', { center: new L.LatLng(58.4, 43.0), zoom: 2,zoomControl: false });
+    map.dragging.disable();
+    map.touchZoom.disable();
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
+    map.boxZoom.disable();
+    map.keyboard.disable();
+    var y = 36.579209;
+    var x = 51.728130;
+    var latlng = L.latLng(y, x);
+    L.marker(latlng).addTo(map);
+    function polystyle() {
+        return {
+            weight: 0.5,
+            fill:
+                false,
+            color:'red',
+            strokewidth:'1'
+        };
+    }
+    new L.GeoJSON(basemap).setStyle(polystyle()).addTo(map);
+
+</script>
+</body>
+</html>
